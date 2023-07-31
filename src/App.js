@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Modal from "./modal";
 
-function App() {
+const App = () => {
+  const initData = [
+    {
+      name: "",
+      content: "",
+      image: "",
+    },
+  ];
+
+  const [data, setData] = useState(initData);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const setAddItem = (item) => {
+    setData([...data, item]);
+  };
+  const getModal = (value) => {
+    setModalVisible(value);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header>
+        <span className="title">산 List</span>
       </header>
+      <main>
+        <div className="sidebar">
+          <button
+            type="button"
+            className="add-button"
+            onClick={() => setModalVisible(true)}
+          >
+            추가
+          </button>
+          {data.map((item, v) => (
+            <span key={v}>{item.name}</span>
+          ))}
+        </div>
+        <section className="container">
+          {data.map((item, v) => (
+            <div className="card" key={v}>
+              <img src={item.image} alt={item.name} />
+              <span>{item.content}</span>
+            </div>
+          ))}
+        </section>
+      </main>
+      <Modal
+        setAddItem={setAddItem}
+        modalVisible={modalVisible}
+        getModal={getModal}
+      />
     </div>
   );
-}
+};
 
 export default App;
