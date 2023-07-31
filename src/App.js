@@ -4,9 +4,29 @@ import Modal from "./modal";
 const App = () => {
   const initData = [
     {
-      name: "",
-      content: "",
-      image: "",
+      name: "한라산",
+      content: "해발 1,940m",
+      image: "/hallasan.png",
+    },
+    {
+      name: "설악산",
+      content: "해발 1,708m",
+      image: "/seoraksan.png",
+    },
+    {
+      name: "북한산",
+      content: "해발 836m",
+      image: "/bukhansan.png",
+    },
+    {
+      name: "관악산",
+      content: "해발 632m",
+      image: "gwanaksan.png",
+    },
+    {
+      name: "인왕산",
+      content: "해발 338m",
+      image: "inwangsan.png",
     },
   ];
 
